@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: iceberg_nessie
+    description: "Formula one tables stored in minio as an apache iceberg table with nessie as the catalog"
+    database: iceberg
+    schema: demo
+    tables:
+      - name: formula_one_car

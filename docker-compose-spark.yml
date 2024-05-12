@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  spark-master:
+    image: bitnami/spark:3.5.0
+    environment:
+      - SPARK_MODE=master
+      - SPARK_USER=spark
+      - AWS_ACCESS_KEY_ID=minio
+      - AWS_REGION=us-east-1
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - AWS_S3_ENDPOINT=http://minio-server:9000
+    ports:
+      - '8089:8080'
+      - '7077:7077'
+    networks:
+      - astro-project_974df4_airflow
+  spark-worker:
+    image: bitnami/spark:3.5.0
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=2
+      - SPARK_USER=spark
+      - AWS_ACCESS_KEY_ID=minio
+      - AWS_REGION=us-east-1
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - AWS_S3_ENDPOINT=http://minio-server:9000
+    networks:
+      - astro-project_974df4_airflow
+
+networks : 
+  astro-project_974df4_airflow:
+    external: true

@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: postgres_local
+    description: "This is the local postgres database instance"
+    schema: public
+    tables:
+      - name: customer_purchase
+      - name : region
+      - name: products
+        
+models:
+  - name: customer_purchase_enriched_dbt
+    description: "customer_purchase_enriched model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: customer_purchases
+    description: "customer_purchases model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
