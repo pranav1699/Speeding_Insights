@@ -1,6 +1,6 @@
 ## Scalable Telemetry Data Pipeline for Formula One Racing Analysis
 
-  
+  ![Project Logo](https://github.com/pranav1699/Speeding_Insights/blob/master/architecture.png)
 
 This describes the Python code for processing and enriching Formula One car data using Apache Spark. The code utilizes the Iceberg data catalog for efficient data management.
 
